@@ -1,21 +1,18 @@
--- Лаба 1. Сценарий для показа. Формат описан в docs/scenarios.md.
--- Запуск: dbcheck run demo/lab1.sql, или в psql: \i /demo/lab1.sql
---
--- Каждый шаг: строка «-- N. что показываем», под ней «-- expect: ответ базы», под ней запрос.
--- Пример, замените своими запросами:
---
--- -- 1. Таблицы на месте: 6 таблиц
--- -- expect: rows 6
--- SELECT table_name FROM information_schema.tables WHERE table_schema = 'public' ORDER BY 1;
---
--- -- 2. Отрицательная цена билета: ошибка CHECK
--- -- expect: error check
--- INSERT INTO tickets (session_id, seat_id, price) VALUES (1, 1, -100);
---
--- -- 3. Несуществующий сеанс: ошибка внешнего ключа
--- -- expect: error fk
--- INSERT INTO tickets (session_id, seat_id, price) VALUES (9999, 1, 300);
---
--- -- 4. То же место на тот же сеанс второй раз: ошибка UNIQUE
--- -- expect: error unique
--- INSERT INTO tickets (session_id, seat_id, price) VALUES (1, 1, 300);
+-- Лаба 1. Три вставки, которые база данных обязана отклонить.
+-- Формат описан в docs/scenarios.md.
+-- Запуск: dbcheck run demo/lab1.sql
+
+-- 1. Актёр с таким email уже есть: ошибка UNIQUE
+-- expect: error unique
+INSERT INTO actors (full_name, birth_date, email)
+VALUES ('Test Actor', '1990-01-01', 'orlov@theatre.test');
+
+-- 2. Отрицательная цена билета: ошибка CHECK
+-- expect: error check
+INSERT INTO tickets (show_id, seat_row, seat_number, price, buyer_name)
+VALUES (1, 99, 1, -100.00, 'Test Buyer');
+
+-- 3. Показ несуществующего спектакля (play_id = 999): ошибка внешнего ключа
+-- expect: error fk
+INSERT INTO shows (play_id, hall_id, starts_at, ends_at, base_price)
+VALUES (999, 1, '2027-01-10 19:00+03', '2027-01-10 21:30+03', 1000.00);
