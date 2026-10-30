@@ -173,7 +173,7 @@ erDiagram
 | Лаба | Что сделано                                                                                                  | Сценарий                                                |
 | ---- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
 | 1    | Схема из 7 таблиц, ограничения, данные (1120 билетов через `generate_series`), нормализация, `ON DELETE`, бизнес-правило через `EXCLUDE` | `demo/lab1.sql`, `demo/lab1_bonus.sql` |
-| 2    | ...                                                                                                          | `demo/lab2.sql`                                         |
+| 2    | 17 запросов: `JOIN`, `GROUP BY`/`HAVING`, «сироты», подзапросы, `INSERT`/`UPDATE`/`DELETE` с откатом, ★ `ROW_NUMBER` и `SUM() OVER`, ★★ `LAG`, `FILTER`, `WITH RECURSIVE` | `demo/lab2.sql` |
 | 3    | ...                                                                                                          | `demo/lab3.sql`                                         |
 | 4    | ...                                                                                                          | `demo/lab4.sql`, `demo/race.sql`, `demo/race_fixed.sql` |
 | 5    | ...                                                                                                          | `demo/lab5.sql`                                         |
