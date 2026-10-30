@@ -108,3 +108,14 @@ SELECT s.id,
        s.starts_at - (n % 30 + 1) * interval '1 day'
 FROM shows s
 CROSS JOIN generate_series(1, 80) AS n;
+
+
+-- Лаба 2: «сироты» для запросов LEFT JOIN ... IS NULL и NOT EXISTS.
+-- Спектакль, у которого ещё нет показов (id 13), и три его роли (id 37-39).
+INSERT INTO plays (title, author, duration_min, age_limit) VALUES
+  ('Дядя Ваня', 'А. П. Чехов', 150, 12);                                -- 13
+INSERT INTO roles (play_id, name, is_lead) VALUES
+  (13,'Войницкий',true),(13,'Астров',true),(13,'Соня',false);           -- 37-39
+-- Актёр, который пока не занят ни в одном показе (id 16).
+INSERT INTO actors (full_name, birth_date, email) VALUES
+  ('Кирилл Лазарев', '1996-08-12', 'lazarev@theatre.test');
