@@ -174,6 +174,6 @@ erDiagram
 | ---- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
 | 1    | Схема из 7 таблиц, ограничения, данные (1120 билетов через `generate_series`), нормализация, `ON DELETE`, бизнес-правило через `EXCLUDE` | `demo/lab1.sql`, `demo/lab1_bonus.sql` |
 | 2    | 17 запросов: `JOIN`, `GROUP BY`/`HAVING`, «сироты», подзапросы, `INSERT`/`UPDATE`/`DELETE` с откатом, ★ `ROW_NUMBER` и `SUM() OVER`, ★★ `LAG`, `FILTER`, `WITH RECURSIVE` | `demo/lab2.sql` |
-| 3    | ...                                                                                                          | `demo/lab3.sql`                                         |
+3 | Два представления (v_show_card, v_show_cast), функции free_seats, actor_schedule, buy_ticket, find_shows, show_state_at. Триггеры: правило темы casting_check_actor_free, вместимость зала tickets_check_capacity, служебный shows_updated_at. ★ материализованное представление mv_monthly_revenue и поиск find_shows. ★★ журнал shows_history с AFTER-триггером. | demo/lab3.sql
 | 4    | ...                                                                                                          | `demo/lab4.sql`, `demo/race.sql`, `demo/race_fixed.sql` |
 | 5    | ...                                                                                                          | `demo/lab5.sql`                                         |
